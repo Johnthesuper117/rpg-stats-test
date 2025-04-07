@@ -5,12 +5,12 @@ class Player:
     self.attack = attack
     self.defence = defence
 
-  def redo(self, name, health, attack, defence):
+  def change(self, health, attack, defence):
     self.health = health
     self.attack = attack
     self.defence = defence
     
-  def statCheck(self):
+  def check(self):
     if int(self.health) + int(self.attack) + int(self.defence) > 300:
       result = "REDO"
     else:
@@ -20,6 +20,7 @@ class Player:
 
 print("You have a max of 300 stat points to use total\n")
 player = Player(input("Enter username: "), input("Enter health stat: "), input("Enter attack stat: "), input("Enter defence stat: "))
-if player.statCheck() == "REDO":
-  print(f"Max stat points is 300, and you added {300 - abs(int(player.health) - int(player.attack) - int(player.defence))} too many, please try agian\n")
-  player.redo(input("Enter username: "), input("Enter health stat: "), input("Enter attack stat: "), input("Enter defence stat: "))
+if int(player.health) + int(player.attack) + int(player.defence) > 300:
+  print(f"Max stat points is 300, and you added {abs(int(player.health) + int(player.attack) + int(player.defence)) - 300} too many, please try agian\n")
+  player.change(input("Enter health stat: "), input("Enter attack stat: "), input("Enter defence stat: "))
+
